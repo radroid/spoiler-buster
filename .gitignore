@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+Capstone/.DS_Store
+Capstone/docs/.DS_Store
+.DS_Store
