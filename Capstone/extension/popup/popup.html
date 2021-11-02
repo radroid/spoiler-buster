@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/popup.css">
-</head>
-<body>
-    <div>
-        <div class="main">
-            <div class="text">
-                <p>Enter the movies you want to us to bust :</p>
-                <input type="text" placeholder="movies" name="movie" >
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/popup.css">
+    </head>
+    <body>
+        <div>
+            <div class="main">
+                <div class="text">
+                    <div>
+                        <p>Enter the movies you want to us to bust :</p>
+                        <div class="inputWrapper input-group mb-3">
+                            <!-- add class="basicAutoComplete" to use the bootstrap autocomplete tool -->
+                            <input type="text" class="form-control" id="movieInp" placeholder="movies" name="movie" >
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" id="enterMovie" type="button" id="button-addon2">
+                                    <img src="/static/arrow-right-solid.svg" width="15" height="20"  alt="right arrow">
+                                </button>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="selectedMovies">
+
+                    </div>
+                </div>
+                <div class="logoDiv">
+                    <img src="/static/logo.png" class="logo">
+                </div>
             </div>
-            <div class="logoDiv">
-                <img src="/static/logo.png" class="logo">
+            <div class="submitDiv">
+                <button class="submit">SUBMIT</button>
             </div>
         </div>
-        <div class="submitDiv">
-            <button class="submit">SUBMIT</button>
-        </div>
-    </div>
-</body>
+    </body>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- <script src="/js/bootstrap-autocomplete.min.js"></script> -->
+    <script src="autocomplete.js"></script>
 </html>

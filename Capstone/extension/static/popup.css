@@ -1,12 +1,16 @@
 body {
     width: 400px;
+    z-index: 999;
+}
+datalist{
+    z-index: 1000;
 }
 .main {
     display: flex;
 }
 .text {
     justify-content: center;
-    width: 90%;
+    width: 99%;
     margin: 25px 0px 0px 10px;
 }
 .text p {
@@ -17,7 +21,7 @@ body {
     border: 1px solid rgb(230, 230, 230);
     border-radius: 5px;
     padding: 7px;
-    width: 90%;
+    /* width: 90%; */
 }
 .text input:active, .text input:focus, .text input:focus-visible {
     outline: 1px solid transparent;
