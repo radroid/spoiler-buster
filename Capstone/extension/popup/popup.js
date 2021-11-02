@@ -9,7 +9,7 @@ chrome.storage.local.get('blockedMovies', (result) => {
 
 enterMovie.addEventListener('click', (e) => {
     movie = movieInp.value
-    if(movieInp.value === '') {
+    if(movieInp.value !== '') {
         bm = [] 
         console.log(bm)
         chrome.storage.local.get('blockedMovies', (res) => {
