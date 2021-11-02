@@ -1,4 +1,3 @@
-const movieInp = document.getElementById('movieInp')
 const movieSuggestion = document.getElementById('movieList')
 
 // $('.basicAutoComplete').autoComplete({
@@ -25,8 +24,8 @@ movieInp.addEventListener('input', (e)=> {
                         return(movie['Title'])
                     }
                 }); 
-                var json = JSON.stringify(suggestionList)
-                fs.writeFile('suggestion.json', json, 'utf8', () => {console.log('done')} )
+                // var json = JSON.stringify(suggestionList)
+                // fs.writeFile('suggestion.json', json, 'utf8', () => {console.log('done')} )
             })
             .catch(err => {
                 console.log(err)
@@ -34,7 +33,5 @@ movieInp.addEventListener('input', (e)=> {
 
     } else {
         suggestionList = []
-        movieSuggestion.removeChild()
-        
     }
 });
