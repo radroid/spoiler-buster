@@ -1,22 +1,27 @@
 const enterMovie = document.getElementById('enterMovie')
 const movieInp = document.getElementById('movieInp')
 
-window.onload = () => {
-    chrome.storage.local.get('blockedMovies', (result) => {
-        console.log(result)
-        result === null ? chrome.storage.local.set({'blockedMovies': []}) : null
-    });
-    console.log('updated')
-};
+
+chrome.storage.local.get('blockedMovies', (result) => {
+    console.log('onload')
+    typeof(result) === 'object' ? chrome.storage.local.set({'blockedMovies': []}, ()=> {console.log('set variable')}) : null
+});
 
 enterMovie.addEventListener('click', (e) => {
-    console.log('event started')
     movie = movieInp.value
-    blockedMovies = chrome.storage.get('blockedMovies', (res) => {
-        console.log(res)
-    })
-    blockedMovies.push(movie)
-    chrome.storage.local.set({'blockedMovies': blockedMovies}, () => {
-        console.log('Movie list updated')
-    })    
+    if(movieInp.value === '') {
+        bm = [] 
+        console.log(bm)
+        chrome.storage.local.get('blockedMovies', (res) => {
+            console.log('This is the storage '+res.blockedMovies)
+            bm = res.blockedMovies
+            bm.push(movie)
+            console.log(bm)
+            chrome.storage.local.set({'blockedMovies': [...bm]}, () => {
+                console.log('Movie list updated')
+            })
+        })    
+    }
+     
+    movieInp.value = ''
 });
