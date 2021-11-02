@@ -1,11 +1,16 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "spoiler-buster",
     "description": "This is a simple extension which blocks spoilers from a website",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "author": "Ramasubramanian D",
-    "browser_action": {
-        "default_icon": "logo.png",
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {             
+            "16": "static/logo16.png",   
+            "24": "static/logo24.png",   
+            "32": "static/logo32.png"  
+        },
         "default_title": "spoiler buster"
     },
     "content_scripts": [
@@ -19,6 +24,7 @@
         }
     ],
     "permissions": [
-        "activeTab" 
+        "activeTab",
+        "storage"
     ]
 }

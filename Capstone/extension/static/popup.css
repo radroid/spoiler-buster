@@ -1,0 +1,49 @@
+body {
+    width: 400px;
+    z-index: 999;
+}
+datalist{
+    z-index: 1000;
+}
+.main {
+    display: flex;
+}
+.text {
+    justify-content: center;
+    width: 99%;
+    margin: 25px 0px 0px 10px;
+}
+.text p {
+    font-size: 13px;
+}
+.text input {
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    padding: 7px;
+    /* width: 90%; */
+}
+.text input:active, .text input:focus, .text input:focus-visible {
+    outline: 1px solid transparent;
+}
+.logoDiv {
+    justify-content: center;
+}
+.logo {
+    width: 150px;
+    height: 150px;
+}
+.submitDiv {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.submit {
+    background-color: #ff5757;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    border: 0px solid #ff5757;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
