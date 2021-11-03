@@ -22,6 +22,15 @@ body {
 }
 .text input:active, .text input:focus, .text input:focus-visible {
     outline: 1px solid transparent;
+    border: 0px solid transparent;
+    background-color: rgb(230, 230, 230);
+    box-shadow: none;
+}
+#enterMovie:active, #enterMovie:focus, #enterMovie:focus-visible {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: rgb(143, 143, 143);
 }
 .selectedMovies {
     min-width: 50px;

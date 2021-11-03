@@ -18,7 +18,7 @@ chrome.storage.local.get('blockedMovies', (result) => {
 
 enterMovie.addEventListener('click', (e) => {
     let movie = movieInp.value
-    if(movieInp.value !== '' || movieInp.value !== ' ') {
+    if(movie !== '' && movie !== ' ') {
         let bm = [] 
         chrome.storage.local.get('blockedMovies', (res) => {
             bm = res.blockedMovies
@@ -29,6 +29,8 @@ enterMovie.addEventListener('click', (e) => {
 
             addMovieNode(movie)
         });    
+    } else {
+        alert('Enter valid movie Name !')
     }
      
     movieInp.value = ''
