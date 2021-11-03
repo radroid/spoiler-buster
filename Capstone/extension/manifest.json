@@ -19,7 +19,8 @@
                 "<all_urls>"
             ],
             "js": [
-                "./js/content.js"
+                "./js/content.js",
+                "./js/algorithmia-0.2.1.js"
             ]
         }
     ],
