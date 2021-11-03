@@ -1,16 +1,13 @@
 body {
-    width: 400px;
+    width: 450px;
     z-index: 999;
-}
-datalist{
-    z-index: 1000;
 }
 .main {
     display: flex;
 }
 .text {
     justify-content: center;
-    width: 99%;
+    width: 60%;
     margin: 25px 0px 0px 10px;
 }
 .text p {
@@ -26,6 +23,40 @@ datalist{
 .text input:active, .text input:focus, .text input:focus-visible {
     outline: 1px solid transparent;
 }
+.selectedMovies {
+    min-width: 50px;
+    max-height: 70px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+}
+.selectedMovies div {
+    margin: 5px 3px;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    background-color: #ff5757;
+    padding: 5px 5px;
+    border: 1px solid #ff5757;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.selectedMovies > div > span {
+    margin-right: 8px;
+} 
+.removeMovie {
+    background-color: white;
+    color: #ff5757 !important;
+    font-weight: 800;
+    padding: 0px 3px;
+    border-radius: 50%;
+}
+.removeMovie:visited, .removeMovie:hover, .removeMovie:focus, .removeMovie:active {
+    background-color: white;
+    color: #ff5757 !important;
+    cursor: pointer;
+}
 .logoDiv {
     justify-content: center;
 }
@@ -37,6 +68,7 @@ datalist{
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 .submit {
     background-color: #ff5757;
