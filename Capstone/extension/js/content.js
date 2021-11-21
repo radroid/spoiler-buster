@@ -36,3 +36,11 @@ try {
 } catch (e) {
     if (e !== BreakException) throw e;
 }
+
+
+const HideTextNode = (ele, content) => {
+    var text_to_hide = document.evaluate("//"+ele+"[contains(., '"+content+"')]", document, null, XPathResult.ANY_TYPE, null ).singleNodeValue;
+    text_to_hide.style.color = "white"
+    text_to_hide.style.backgroundColor = "red"
+    text_to_hide.innerText = "Spoilers here"
+}
