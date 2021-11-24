@@ -139,3 +139,4 @@ AI-Algorithms/Data Acquisition & Understanding/data/full_dataset/IMDB_movie_deta
 AI-Algorithms/Data Acquisition & Understanding/data/full_dataset/IMDB_reviews.json
 Capstone/algorithm/data/org_dataset
 Capstone/algorithm/notebooks/auth.json
+Capstone/algorithm/data/processed_dataset/smaller_dataset.csv
