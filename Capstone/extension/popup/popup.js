@@ -1,6 +1,7 @@
 const enterMovie = document.getElementById('enterMovie')
 const movieInp = document.getElementById('movieInp')
 const blockedMovieList = document.getElementById('blockedMovieList')
+const extnPower = document.getElementById('extnToggle')
 
 chrome.storage.local.get('blockedMovies', (result) => {
     if(typeof(result) === 'object') { 
@@ -14,6 +15,14 @@ chrome.storage.local.get('blockedMovies', (result) => {
     result.blockedMovies.forEach(movie => {
         addMovieNode(movie)
     });
+});
+
+chrome.storage.local.get('isOn', (res) => {
+    if(res.isOn === undefined) {
+        chrome.storage.local.set({'isOn': false}, () => {
+            console.log('extension power button initialized !!')
+        })
+    }
 });
 
 enterMovie.addEventListener('click', (e) => {
@@ -65,3 +74,23 @@ const addMovieNode = (movieName) => {
     temp.appendChild(closeTag)
     blockedMovieList.appendChild(temp)
 }
+
+const toggleFilter = () => {
+    chrome.storage.local.get('isOn', (res) => {
+        console.log('here')
+        console.log(res.isOn)
+        chrome.storage.local.set({'isOn': !res.isOn}, () => {
+            if(res.isOn) {
+                extnPower.setAttribute('checked', res.isOn)
+            } else {
+                extnPower.setAttribute('checked', res.isOn)
+            }   
+        });
+    });
+}
+
+extnPower.addEventListener('click', (e) => {
+    toggleFilter()
+});
+
+toggleFilter();
