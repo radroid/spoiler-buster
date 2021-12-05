@@ -21,7 +21,11 @@ chrome.storage.local.get('isOn', (res) => {
     if(res.isOn === undefined) {
         chrome.storage.local.set({'isOn': false}, () => {
             console.log('extension power button initialized !!')
+            setExtensionState(false)
         })
+    } else {
+        console.log('Intiialize'+ res.isOn)
+        setExtensionState(res.isOn)
     }
 });
 
@@ -75,16 +79,22 @@ const addMovieNode = (movieName) => {
     blockedMovieList.appendChild(temp)
 }
 
+const setExtensionState = (state) => {
+    if(state) {
+        extnPower.setAttribute('checked', state)
+    } else {
+        extnPower.removeAttribute('checked')
+    }
+    
+}
+
 const toggleFilter = () => {
     chrome.storage.local.get('isOn', (res) => {
         console.log('here')
-        console.log(res.isOn)
-        chrome.storage.local.set({'isOn': !res.isOn}, () => {
-            if(res.isOn) {
-                extnPower.setAttribute('checked', res.isOn)
-            } else {
-                extnPower.setAttribute('checked', res.isOn)
-            }   
+        console.log(!res.isOn)
+        let tempState = res.isOn
+        chrome.storage.local.set({'isOn': !tempState}, () => {
+            setExtensionState(!tempState)
         });
     });
 }
@@ -93,4 +103,3 @@ extnPower.addEventListener('click', (e) => {
     toggleFilter()
 });
 
-toggleFilter();

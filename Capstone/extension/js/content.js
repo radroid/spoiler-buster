@@ -21,32 +21,39 @@ pushIntoList(textsEleSpan)
 
 // Pushing p tags into texts and textsNode
 pushIntoList(textsEleP)
+chrome.storage.local.get('isOn', (res) => {
+    if(res.isOn) {
+        try {
+            let allText = texts.join(' ')
 
-try {
-    let allText = texts.join(' ')
-
-    // get the list of blocked movies 
-    chrome.storage.local.get('blockedMovies', (res) => {
-        res.blockedMovies.forEach((movie) => {
-            // Check if movie name exists in the article, statistically an article containing spoiler of the movie will have the name mentioned atleast once in the article
-            if(allText.toLowerCase().includes(movie.toLowerCase())) {
-                // if the movie name is present send the texts list to the ML model and that will determine if individual elements are spoiler text or not
-                Algorithmia.client("simp8MC5ZKi7uX9zOFPG4OPRt/L1")
-                .algo("radroid/spoiler_detection/0.2.1?timeout=300") // timeout is optional
-                .pipe(texts)
-                .then(function(output) {
-                    // ALGORITHM OUTPUT
-                    // 1 - spoiler 
-                    // 0 - not spoiler 
-                    hideSpoilers(output.result)
-                });
-            }
-
-        });
-    });
-} catch (e) {
-    if (e !== BreakException) throw e;
-}
+            // get the list of blocked movies 
+            chrome.storage.local.get('blockedMovies', (res) => {
+                let len = res.blockedMovies.length
+                console.log(res.blockedMovies.length)
+                console.log('here')
+                if(res.blockedMovies.length > 0) {
+                    res.blockedMovies.forEach((movie) => {
+                        // Check if movie name exists in the article, statistically an article containing spoiler of the movie will have the name mentioned atleast once in the article
+                        if(allText.toLowerCase().includes(movie.toLowerCase())) {
+                            // if the movie name is present send the texts list to the ML model and that will determine if individual elements are spoiler text or not
+                            Algorithmia.client("simp8MC5ZKi7uX9zOFPG4OPRt/L1")
+                            .algo("radroid/spoiler_detection/0.2.1?timeout=300") // timeout is optional
+                            .pipe(texts)
+                            .then(function(output) {
+                                // ALGORITHM OUTPUT
+                                // 1 - spoiler 
+                                // 0 - not spoiler 
+                                hideSpoilers(output.result)
+                            });
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            if (e !== BreakException) throw e;
+        }
+    }
+});
 
 const hideSpoilers = (spoiler_list) => {
     // Loop through the spoilers list and hide the content of the texts which are marked as spoilers
