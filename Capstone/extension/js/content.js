@@ -59,9 +59,12 @@ const hideSpoilers = (spoiler_list) => {
     // Loop through the spoilers list and hide the content of the texts which are marked as spoilers
     spoiler_list.forEach((sp, i) => {
         if(sp === 1) {
+            let h = textsNode[i].offsetHeight
             textsNode[i].textContent = 'Spoilers inside'
-            textsNode[i].style.backgroundColor = 'red'
+            textsNode[i].style.backgroundColor = '#ff5757'
+            textsNode[i].style.height = h+"px"
             textsNode[i].style.color = 'white'
+            textsNode[i].style.textAlign = 'center'
             textsNode[i].style.fontWeight = 700
         }
     })
