@@ -97,8 +97,10 @@ const addMovieNode = (movieName) => {
 const setExtensionState = (state) => {
     if(state) {
         extnPower.setAttribute('checked', state)
+        chrome.tabs.reload()
     } else {
         extnPower.removeAttribute('checked')
+        chrome.tabs.reload()
     }  
 }
 
