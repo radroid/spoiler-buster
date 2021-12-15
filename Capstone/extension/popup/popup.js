@@ -97,10 +97,8 @@ const addMovieNode = (movieName) => {
 const setExtensionState = (state) => {
     if(state) {
         extnPower.setAttribute('checked', state)
-        chrome.tabs.reload()
     } else {
         extnPower.removeAttribute('checked')
-        chrome.tabs.reload()
     }  
 }
 
@@ -112,6 +110,7 @@ const toggleFilter = () => {
         let tempState = res.isOn
         chrome.storage.local.set({'isOn': !tempState}, () => {
             setExtensionState(!tempState)
+            chrome.tabs.reload()
         });
     });
 }
