@@ -49,13 +49,13 @@ enterMovie.addEventListener('click', (e) => {
             bm = res.blockedMovies
             bm.push(movie)
             chrome.storage.local.set({'blockedMovies': [...bm]}, () => {
-                console.log('Movie list updated')
+                console.log('Blocklist updated')
             });
 
             addMovieNode(movie)
         });    
     } else {
-        alert('Enter valid movie Name !')
+        alert('Enter valid movie, series or book name!')
     }
      
     movieInp.value = ''
